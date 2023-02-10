@@ -1,0 +1,43 @@
+body{
+  background-color: #486b74 ; 
+  background-attachment: fixed;
+  background-size:cover;
+  background-size: 100%  100%;
+  min-height: 100%; 
+}
+
+
+
+
+[nz-form] {
+    max-width: 900px;
+    background-color: #486b74 ;
+    margin: auto;
+    padding-top: 100px;
+  }
+
+  .phone-select {
+    width: 70px;
+  }
+
+  .register-are {
+    margin-bottom: 8px;
+  }
+
+  i {
+    cursor: pointer;
+  }
+
+  form .button input{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  }

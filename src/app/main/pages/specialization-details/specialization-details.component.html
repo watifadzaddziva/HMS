@@ -1,0 +1,56 @@
+<div class='container'>
+    <div class='row text-center mb-4'>
+        <h4 class='mt-3 display-6'>{{chatroom.groupName}}</h4>
+        
+    </div>
+
+    <h6>Members</h6>
+    <hr class="mb-3">
+    <div class='right'>
+      <button class='mb-2 ml-3' (click)="add()" nz-button nzType='primary'>Add Members</button>
+  </div>
+    <nz-table [nzFrontPagination]='false' #basicTable [nzData]='members'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let data of basicTable.data'>
+                <!-- <td>{{data.firstName}}   </td> -->
+                <!-- <td> {{data.surname}}</td> -->
+                
+               
+               <td>
+                <nz-button-group class='mt-1'>
+
+                    <!-- <a nz-popconfirm nzPopconfirmTitle="Are you sure delete this member?"
+                        nzPopconfirmPlacement="bottom" (nzOnConfirm)="deleteMember(data)"
+                        (nzOnCancel)="toggle(false)">
+                        <button class='mb-2' nz-button nzType='danger'>
+                            <i nz-icon nzType='delete' nzTheme='outline'></i>
+                        </button>
+                    </a> -->
+                </nz-button-group>
+            </td>
+
+            </tr>
+        </tbody>
+    </nz-table>
+
+</div>
+<nz-drawer [nzClosable]='true' [nzWidth]='500' [nzVisible]='visible' nzPlacement='right' [nzTitle]='"Add Members"'
+    (nzOnClose)='toggle(false)'>
+    <ng-container *nzDrawerContent>
+        <form nz-form [formGroup]='form' nzLayout='vertical' (ngSubmit)='submit()' >
+            <formly-form [model]='member' [fields]='fields' [form]='form'  [options]="{}" ></formly-form>
+            <nz-button-group class='mt-1'>
+                <button nz-button [disabled]="!form.valid" nzType='primary' type='submit'>Save</button>
+                <button nz-button nzType='primary' (click)='toggle(false)' nzGhost type='reset'>Cancel</button>
+            </nz-button-group>
+        </form>
+    </ng-container>
+</nz-drawer>
+
