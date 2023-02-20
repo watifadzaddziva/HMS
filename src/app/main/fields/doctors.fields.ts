@@ -1,6 +1,6 @@
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
-export const DoctorsFields = function (): FormlyFieldConfig[] {
+export const DoctorsFields = function get(specializationList: Array<any>): FormlyFieldConfig[] {
     return [
       {
         key: 'firstName',
@@ -42,8 +42,8 @@ export const DoctorsFields = function (): FormlyFieldConfig[] {
           placeholder: 'select gender',
           required: true,
           options: [
-            { value: 'FEMALE', label: 'Female' },
-            { value: 'MALE', label: 'Male' },
+            { value: 'Female', label: 'Female' },
+            { value: 'Male', label: 'Male' },
            
           ]
         }
@@ -59,17 +59,30 @@ export const DoctorsFields = function (): FormlyFieldConfig[] {
           required: true,
         }
       },
-
       {
-        key: 'address',
-        type: 'textarea',
+        key: 'phoneNumber',
+        type: 'input',
         templateOptions: {
-          label: 'Address',
-          placeholder: 'Enter Address',
+          label: 'Phone Number',
+          placeholder: 'Enter Phone Number',
           required: true,
         }
       },
+
+      {
+        key: 'specialisationId',
+        type: 'select',
+        templateOptions: {
+          label: 'Specialization',
+          placeholder: 'select specialization',
+          options: specializationList,
+          // multiple: true,
+          required: true,
+        }
+      },
+
   
+     
       
     ]
   }

@@ -1,1 +1,44 @@
-<p>set-appointment works!</p>
+
+
+<form nz-form  nzLayout='vertical' class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <h2 style="text-align: left;">Book Appointment</h2><br>
+    <formly-form [model]='appointment'    [fields]='fields' [options]="options"  [form]='form' ></formly-form>
+    <nz-form-item>
+        <nz-form-label [nzRequired]="true">Specialization </nz-form-label>
+        <nz-form-control nzErrorTip="Please select Specialization!!!">
+            <nz-input-group>
+                <nz-select     formControlName="specialisationId" (ngModelChange)="getDoctors($event)" [nzPlaceHolder]="'Select Specialization'">
+                    <nz-option *ngFor="let specialist of specializationList"  [nzValue]="specialist.id" [nzLabel]="specialist.name"  nzShowSearch nzAllowClear class="formControl"></nz-option>
+                </nz-select>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label  [nzRequired]="true">Doctor</nz-form-label>
+        <nz-form-control nzErrorTip="Please select Doctor!!">
+            <nz-input-group>
+                <nz-select [(ngModel)]="patientAppointment.doctorId" name="doctorId" nzShowSearch nzAllowClear formControlName="doctorId"
+                    [nzPlaceHolder]="'Select Doctor'">
+                    <nz-option *ngFor="let doctor of specializationDetails" [nzValue]="doctor.id" [nzLabel]="doctor.firstName"  class="formControl"></nz-option>
+                </nz-select>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+<!-- <nz-form-item>
+    <nz-form-label  [nzRequired]="true">Date</nz-form-label>
+    <nz-form-control nzErrorTip="Please input select Date!">
+        <nz-date-picker style="width:100%" [(ngModel)]="patientAppointment.appointmentDate" name="appointmentDate" class="formControl" formControlName="appointmentDate"></nz-date-picker>
+    </nz-form-control>
+</nz-form-item> -->
+          
+
+            <nz-form-item >
+                <nz-form-control >
+                  <button nz-button   type="submit" [disabled]="form.invalid" nzType="primary">Save</button>&nbsp;
+                  <button nz-button nzType='primary' nzGhost type='reset'>Cancel</button> 
+                </nz-form-control>
+              </nz-form-item>
+ </form>
+ 

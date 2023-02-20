@@ -1,16 +1,16 @@
 <button class='mb-2 ml-3' nz-button (click)='toggle(true)' nzType='primary' >
-    <i nz-icon nzType='edit' nzTheme='outline' *ngIf="chatroom.groupId"></i>
-    <span *ngIf="!chatroom.groupId">Add Chatroom</span>
+    <i nz-icon nzType='edit' nzTheme='outline' *ngIf="specialization.id"></i>
+    <span *ngIf="!specialization.id">Add Specialization</span>
   </button>
   <nz-drawer [nzClosable]='false' [nzWidth]='400' [nzVisible]='visible' nzPlacement='right'
-             [nzTitle]='chatroom.id? "Edit Chatroom" : "Add Chatroom"' (nzOnClose)='toggle(false)'>
+             [nzTitle]='specialization.id? "Edit Chatroom" : "Add Chatroom"' (nzOnClose)='toggle(false)'>
     <ng-container *nzDrawerContent>
       <form nz-form [formGroup]='form' nzLayout='vertical' (ngSubmit)='submit()'>
-        <formly-form [model]='chatroom' [fields]='fields'  [form]='form' [options]="{}"></formly-form>
+        <formly-form [model]='specialization' [fields]='fields'  [form]='form' [options]="{}"></formly-form>
         <div class="clearfix">
            </div>
         <nz-button-group class='mt-1'>
-          <button nz-button nzType='primary' type='submit' [disabled]="!chatroom.groupIcon">Save</button>
+          <button nz-button nzType='primary' type='submit' [disabled]="form.invalid">Save</button>&nbsp;&nbsp;
           <button nz-button nzType='primary' (click)='toggle(false)' nzGhost type='reset'>Cancel</button>
         </nz-button-group>
       </form>

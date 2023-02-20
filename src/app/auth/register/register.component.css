@@ -1,5 +1,5 @@
 body{
-  background-color: #486b74 ; 
+  background: url('src/assets/marcelo-leal-6pcGTJDuf6M-unsplash.jpg') no-repeat ; 
   background-attachment: fixed;
   background-size:cover;
   background-size: 100%  100%;
@@ -10,9 +10,10 @@ body{
 
 
 [nz-form] {
-    max-width: 900px;
-    background-color: #486b74 ;
+    max-width: 1300px;
+    /* background-color: #486b74 ; */
     margin: auto;
+    padding-right: 40px;
     padding-top: 100px;
   }
 
@@ -24,6 +25,11 @@ body{
     margin-bottom: 8px;
   }
 
+  .form-input{
+    border-radius: 20px;
+    background-color: none;
+  }
+
   i {
     cursor: pointer;
   }
@@ -31,13 +37,17 @@ body{
   form .button input{
     height: 100%;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 20px;
     border: none;
-    color: #fff;
+    /* color: #fff; */
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  }
+
+  .button{
+    border-radius: 20px;
   }

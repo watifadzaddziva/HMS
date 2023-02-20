@@ -20,7 +20,8 @@ import {NzEmptyModule} from "ng-zorro-antd/empty";
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
-
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 
 
 
@@ -46,7 +47,9 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
     NzEmptyModule,
     NzLayoutModule,
    NzDatePickerModule,
-     NzPopconfirmModule
+     NzPopconfirmModule,
+     NzSelectModule,
+     NzTimePickerModule
 
 
 ],

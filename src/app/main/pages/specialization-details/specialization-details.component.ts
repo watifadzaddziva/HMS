@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { MembersFields } from '../../fields/doctors-in-a-specialization.fields';
+import { DefaultService } from '../../services/default.service';
 
 @Component({
   selector: 'app-specialization-details',
@@ -11,92 +11,41 @@ import { MembersFields } from '../../fields/doctors-in-a-specialization.fields';
   styleUrls: ['./specialization-details.component.css']
 })
 export class SpecializationDetailsComponent {
-  @Input() groupId!: number;
-  chatroom !: any;
-  members: [] = [];
-  member = {} ;
-  @Output() output = new EventEmitter();
-  membersToAdd: any[] = [];
-  visible!: boolean;
-  memberName: any[] = [];
-  form = new FormGroup({});
-  fields!: FormlyFieldConfig[];
-  page = 1;
-  paginated!: any;
-  fileList: any = [];
+
+  specialization !: any;
+  specializationList!: any
+  specializationDetails!: any
+  doctors: [] = [];
+  id!: number;
 
   constructor(
-    private router: ActivatedRoute,
-    private notify: NzNotificationService
+    private route: ActivatedRoute,
+    private notify: NzNotificationService,
+    private defaultService: DefaultService,
   ) {
-    // this.groupId = this.router.snapshot.params.id;
+  
   }
 
   ngOnInit(): void {
-    this.fields = MembersFields(this.membersToAdd);
-    this.getChatroom(this.groupId);
-    this.getChatroomMembers();
-    this.getMembersList();
-    this.getAllChatrooms();
+    this.id=this.route.snapshot.params['id'];
+
+    
+    this.defaultService.getAllSpecialization().subscribe(
+      (data)=>{
+       this.specializationList= data.content
+       this.defaultService.getSpecializationById(this.id).subscribe(data=>{
+        console.log(data);
+        this.specializationDetails=data
+  
+      })
+      });
+
+  
   }
 
-  getChatroom(groupId: any) {
-    // this.service.get(`chatroom/getGroupById/${groupId}`).subscribe((result) => {
-    //   console.log(result);
-    //   this.chatroom = result;
-    // });
-  }
-
-  add(): void {
-    // this.member = {} as Member;
-    this.toggle(true);
-  }
-
-  toggle(visible: boolean): void {
-    this.visible = visible;
-  }
-  submit() {
-
-    // const dataToSend = this.form.value;
-    // this.service
-    //   .postToUrl(`/chatroom/add-member/${this.groupId}`, dataToSend)
-    //   .subscribe((res) => {
-    //     this.notify.success('Members Added', res.message);
-    //     this.getChatroom(this.groupId);
-    //     this.toggle(false);
-    //     this.fileList = [];
-
-    //     this.getChatroomMembers();
-    //   });
-  }
-  getMembersList() {
-    // this.service.get(`/member?pageNumber=${this.page - 1}`).subscribe((res) => {
-    //   this.membersToAdd = res.content.map((l: any) => {
-    //     return { label: l.firstName, value: l.id };
-    //   });
-    //   this.fields = MembersFields(this.membersToAdd);
-    // });
-  }
-  getChatroomMembers() {
-    // this.service
-    //   .get(`/chatroom/getGroupWithMembers/${this.groupId}`)
-    //   .subscribe((res) => {
-    //     this.members = res.member;
-    //   });
-  }
-  deleteMember(member : any): void {
  
-    // this.service.delete(`/chatroom/remove-member-in-group/${this.groupId}/${member.id}`).subscribe(() => {
-    //   this.notify.success('member deleted successfully', '');
-    //   this.getChatroomMembers();
-    // });
-  }
 
+ 
 
-  getAllChatrooms(){
-  //   this.service.get(`/chatroom`).subscribe((res)=>{
-  //     console.log(res)
-  //   })
-  }
 
 }

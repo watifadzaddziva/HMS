@@ -1,5 +1,7 @@
 import { Component, Injector } from '@angular/core';
+import { DefaultExport } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { DefaultService } from '../../services/default.service';
 
 @Component({
   selector: 'app-patients-page',
@@ -7,7 +9,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   styleUrls: ['./patients-page.component.css']
 })
 export class PatientsPageComponent {
-  patients!: any;
+  patients !: any;
   page = 1;
   baseUrl!: string;
   visible!: boolean;
@@ -15,19 +17,13 @@ export class PatientsPageComponent {
   viewId !: any;
 
   constructor( 
-    private injector: Injector, private nzMessageService: NzMessageService) {
+    private injector: Injector, private nzMessageService: NzMessageService,
+    private defaultService:DefaultService ) {
   }
 
   ngOnInit(): void {
-    this.getEmployees();
     this.load();
    
-  }
-
-  getEmployees(): void {
-  //  this.defaultService.getAllEmployees().subscribe((res)=>{
-  //   this.employees= res.content
-  //  })
   }
 
  
@@ -37,22 +33,14 @@ export class PatientsPageComponent {
   }
 
   load( event?: number): void {
-    // this.defaultService.getAllEmployees().subscribe((res)=>{
-    //   this.employees= res.content
-    //  })
+    this.defaultService.getAllPatients().subscribe((res)=>{
+      this.patients= res
+     })
   }
 
   reload(event : any){
     this.load(event)
     this.doctor = {}
-  }
-
-  confirm(id: number): void {
-    // this.defaultService.deleteEmployee(id).subscribe(() => {
-    //   this.nzMessageService.info('employee has been deleted');
-    //   this.getEmployees();
-    //   this.load();
-    // });
   }
 
   

@@ -1,37 +1,60 @@
 
 <div class='container'>
-    <div class='row text-center'>
+    <!-- <div >
         <h2 >Specialization</h2>
-    </div>
-    <div class='right'>
-        <app-set-specialization [chatroom]='chatroom' (output)='reload($event)'></app-set-specialization>
+    </div> -->
+    <div >
+      <!-- <div >
+        <nz-input-group>
+          <input
+            type="text"
+          
+            nz-input
+           
+            placeholder="search by name"
+            style="width: 80%"
+          />
+          <button  nz-button nzType="primary"  nzSearch>
+            <i nz-icon nzType="search"></i>
+          </button>
+        </nz-input-group>
+      </div> -->
+      <!--  [(ngModel)]="name" 
+      [disabled]="name === ''"
+      (click)="search()"
+        ngModel
+    -->
+    <div >
+        <app-set-specialization [specialization]='specialization' (output)='reload($event)'></app-set-specialization>
       </div>
-     <nz-table  #basicTable [nzData]='chatrooms' [nzPageSize]='7'>
+     <nz-table  #basicTable [nzData]='data' [nzPageSize]='5'>
        <thead>
        <tr>
          <th>Specialization Name</th>
+         <th>Descritpion</th>
         
          <th></th>
        </tr>
        </thead>
        <tbody>
        <tr *ngFor='let data of basicTable.data'>
-         <td>{{data.firstName}} </td>
+         <td>{{data.name}} </td>
+         <td>{{data.description}} </td>
         
          <td>
            <nz-button-group>
-         
-           <a
+            <button nz-button nzType="primary"  routerLink='/main/specialization-details/{{data.id}}' nzGhost>
+              <i nz-icon nzType='folder-open' nzTheme='outline'></i>
+          </button><br>
+           <!-- <a
              nz-popconfirm
              nzPopconfirmTitle="Are you sure delete this employee?"
              nzPopconfirmPlacement="bottom"
              (nzOnConfirm)="confirm(data.id)"
              nz-butto>
              <button nz-button nzType="default" nzDanger><i nz-icon nzType="delete" nzTheme="outline"></i></button>
-           </a>
-           <button nz-button nzType="primary"  routerLink='/organisation-structure/chatroom/{{data.groupId}}' nzGhost>
-            <i nz-icon nzType='folder-open' nzTheme='outline'></i>
-        </button>
+           </a> -->
+          
            </nz-button-group>
          </td>
        </tr>

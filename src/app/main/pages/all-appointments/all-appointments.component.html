@@ -1,0 +1,30 @@
+<div class='container'>
+    
+    <nz-table  #basicTable [nzData]='appointments' [nzPageSize]='5'
+              >
+      <thead>
+      <tr>
+        <th>Patient</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Specialization</th>
+        <th>Doctor</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor='let data of basicTable.data'>
+        <td>{{data?.patient?.firstName}} </td>
+        <td>{{data.appointmentDate}} </td>
+        <td>{{data.appointmentTime }}</td>
+        <td>{{data?.assignedDoctor?.specialisation?.name}} </td>
+        <td>{{data?.assignedDoctor?.firstName}} </td>
+        <td> 
+            <i *ngIf="data.status=='DENIED'" class='mx-3' style='color: red' >Denied</i>
+            <i *ngIf="data.status=='CONFIRMED'" class='mx-3' style='color: rgb(44, 177, 44)'>Confirmed</i>
+            <i *ngIf="data.status=='PENDING'" class='mx-3' style='color: blue' >Pending</i>
+        </td> 
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>

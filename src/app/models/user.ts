@@ -1,6 +1,6 @@
 export class User {
 
-    id !: string;
+    id !: number;
     firstName !: string;
     lastName !: string;
     email !: string;
@@ -8,6 +8,6 @@ export class User {
     password !: string;
     phoneNumber!: string;
     gender!: string;
-    dateOfBirth!: string
+    dateOfBirth!: string;
 
 }

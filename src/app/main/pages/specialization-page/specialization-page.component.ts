@@ -2,6 +2,7 @@ import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angul
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { DefaultService } from '../../services/default.service';
 
 @Component({
   selector: 'app-specialization-page',
@@ -11,58 +12,40 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class SpecializationPageComponent implements OnInit {
 
   visible = false;
-  chatrooms!: any
+  // chatrooms!: any
   form = new FormGroup({});
-  url = `/chatroom/`;
   fields !: FormlyFieldConfig[];
-  @Input() chatroom!: any;
+  @Input() specialization!: any;
   @Output() output = new EventEmitter();
   fileList: any = [];
-  previewImage: string | undefined = '';
-  previewVisible = false;
-  uploading = false;
-  baseUrl: any;
+  data!: any;
 
   constructor( 
-    private injector: Injector, private nzMessageService: NzMessageService) {
+    private injector: Injector, private nzMessageService: NzMessageService,
+    private defaultService: DefaultService) {
   }
 
   ngOnInit(): void {
-    this.getEmployees();
     this.load();
    
   }
 
-  getEmployees(): void {
-  //  this.defaultService.getAllEmployees().subscribe((res)=>{
-  //   this.employees= res.content
-  //  })
-  }
-
- 
 
   toggle(visible: boolean): void {
     this.visible = visible;
   }
 
   load( event?: number): void {
-    // this.defaultService.getAllEmployees().subscribe((res)=>{
-    //   this.employees= res.content
-    //  })
+    this.defaultService.getAllSpecialization().subscribe((res)=>{
+      this.data = res
+    })
   }
 
   reload(event : any){
     this.load(event)
-    this.chatroom = {}
+    this.specialization = {}
   }
 
-  confirm(id: number): void {
-    // this.defaultService.deleteEmployee(id).subscribe(() => {
-    //   this.nzMessageService.info('employee has been deleted');
-    //   this.getEmployees();
-    //   this.load();
-    // });
-  }
 
   
 }

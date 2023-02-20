@@ -15,6 +15,10 @@ import { SpecializationPageComponent } from './pages/specialization-page/special
 import { SetSpecializationComponent } from './components/set-specialization/set-specialization.component';
 import { SetAppointmentComponent } from './components/set-appointment/set-appointment.component';
 import { SpecializationDetailsComponent } from './pages/specialization-details/specialization-details.component';
+import { AllAppointmentsComponent } from './pages/all-appointments/all-appointments.component';
+import { PendingAppointmentsComponent } from './pages/pending-appointments/pending-appointments.component';
+import { PatientDetailsComponent } from './pages/patient-details/patient-details.component';
+import { DoctorDetailsComponent } from './pages/doctor-details/doctor-details.component';
 
 
 @NgModule({
@@ -27,7 +31,11 @@ import { SpecializationDetailsComponent } from './pages/specialization-details/s
     SpecializationPageComponent,
     SetSpecializationComponent,
     SetAppointmentComponent,
-    SpecializationDetailsComponent
+    SpecializationDetailsComponent,
+    AllAppointmentsComponent,
+    PendingAppointmentsComponent,
+    PatientDetailsComponent,
+    DoctorDetailsComponent
   ],
   imports: [
     CommonModule,

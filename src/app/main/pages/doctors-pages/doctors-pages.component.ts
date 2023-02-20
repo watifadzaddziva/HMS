@@ -1,5 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { User } from 'src/app/models/user';
+import { DefaultService } from '../../services/default.service';
 
 @Component({
   selector: 'app-doctors-pages',
@@ -14,23 +16,19 @@ export class DoctorsPagesComponent implements OnInit {
   visible!: boolean;
   doctor  ={}
   viewId !: any;
+  id!: User;
 
   constructor( 
-    private injector: Injector, private nzMessageService: NzMessageService) {
+    private injector: Injector, private nzMessageService: NzMessageService,
+    private defaultService: DefaultService) {
   }
 
   ngOnInit(): void {
-    this.getEmployees();
     this.load();
    
   }
 
-  getEmployees(): void {
-  //  this.defaultService.getAllEmployees().subscribe((res)=>{
-  //   this.employees= res.content
-  //  })
-  }
-
+ 
  
 
   toggle(visible: boolean): void {
@@ -38,9 +36,9 @@ export class DoctorsPagesComponent implements OnInit {
   }
 
   load( event?: number): void {
-    // this.defaultService.getAllEmployees().subscribe((res)=>{
-    //   this.employees= res.content
-    //  })
+    this.defaultService.getAllDoctors().subscribe((res)=>{
+      this.doctors= res
+     })
   }
 
   reload(event : any){
@@ -49,11 +47,10 @@ export class DoctorsPagesComponent implements OnInit {
   }
 
   confirm(id: number): void {
-    // this.defaultService.deleteEmployee(id).subscribe(() => {
-    //   this.nzMessageService.info('employee has been deleted');
-    //   this.getEmployees();
-    //   this.load();
-    // });
+    this.defaultService.deleteDoctor(id).subscribe(() => {
+      this.nzMessageService.info('doctor has been deleted');
+      this.load();
+    });
   }
 
   

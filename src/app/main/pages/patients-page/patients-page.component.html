@@ -1,17 +1,18 @@
 
 <div class='container'>
    <h2>Patients List Enrolled</h2>
-    <nz-table  #basicTable [nzData]='patients' [nzPageSize]='7'>
+    <nz-table 
+     #basicTable [nzData]='patients' [nzPageSize]='7'
+     >
       <thead>
       <tr>
-        <th>First Name</th>
+        <th >First Name</th>
         <th>Last Name</th>
         <th>Email</th>
         <th>Gender</th>
-        <th>Address</th>
-        <th>Date Of Birth</th>
+        <!-- <th>Address</th> -->
+        <!-- <th>Date Of Birth</th> -->
 
-        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -20,21 +21,8 @@
         <td>{{data.lastName}} </td>
         <td>{{data.email}} </td>
         <td>{{data.gender}} </td>
-        <td>{{data.address}} </td>
-        <td>{{data.dateOfBirth}} </td>
-        <td>
-          <nz-button-group>
-        
-          <a
-            nz-popconfirm
-            nzPopconfirmTitle="Are you sure delete this employee?"
-            nzPopconfirmPlacement="bottom"
-            (nzOnConfirm)="confirm(data.id)"
-            nz-butto>
-            <button nz-button nzType="default" nzDanger><i nz-icon nzType="delete" nzTheme="outline"></i></button>
-          </a>
-          </nz-button-group>
-        </td>
+        <!-- <td>{{data.address}} </td> -->
+        <!-- <td>{{data.dateOfBirth}} </td> -->
       </tr>
       </tbody>
     </nz-table>

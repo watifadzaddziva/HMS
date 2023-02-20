@@ -1,0 +1,31 @@
+<div class='container'>
+    
+    <nz-table  #basicTable [nzData]='pendingAppointments' [nzPageSize]='5'
+              >
+      <thead>
+      <tr>
+        <th>Patient</th>
+        <th>Date</th>
+        <th>Time</th>
+        <!-- <th>Specialization</th> -->
+        <!-- <th>Doctor</th> -->
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor='let data of basicTable.data'>
+        <td>{{data.patient?.firstName}} </td>
+        <td>{{data.appointmentDate}} </td>
+        <td>{{data.appointmentTime }}</td>
+        <!-- <td>{{data?.assignedDoctor?.specialisation?.name}} </td> -->
+        <!-- <td>{{data?.assignedDoctor?.firstName}} </td> -->
+        <td>
+            <button nz-button nzType="primary" (click)="confirmAppointment(data.id)" nzTheme="outline" >Confirm</button>&nbsp;
+                <button nz-button nzType="primary"  (click)="denyAppointment(data.id)"  nzDanger>Decline</button>
+              
+          </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+

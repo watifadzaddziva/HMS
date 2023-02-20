@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormlyNgZorroAntdModule } from '@ngx-formly/ng-zorro-antd';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 registerLocaleData(en);
 
@@ -47,7 +48,8 @@ registerLocaleData(en);
     
 
   ],
-  providers: [NzNotificationService,NzMessageService,
+  providers: [NzNotificationService,NzMessageService,JwtHelperService,
+    { provide:  JWT_OPTIONS, useValue: JWT_OPTIONS},
     { provide: NZ_I18N, useValue: en_US }
   ],
   bootstrap: [AppComponent]
