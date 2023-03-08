@@ -40,9 +40,12 @@ static NAME='token';
       this.authService.saveToken('token')
       this.router.navigate(['main'])
 
+    }, error=>{
+      this.notification.error("","bad credentials")
     })
     
    
    }
+   
  
 }
