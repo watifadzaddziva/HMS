@@ -4,6 +4,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
+import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
 
 @Component({
   selector: 'app-register',
@@ -22,6 +23,12 @@ export class RegisterComponent  implements OnInit{
   textValue: string | null = null;
   passwordVisible = false;
   password?: string;
+  separateDialCode = false;
+	SearchCountryField = SearchCountryField;
+	CountryISO = CountryISO;
+  PhoneNumberFormat = PhoneNumberFormat;
+	preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom];
+
   registrationForm!: FormGroup;
 
   constructor(private fb: UntypedFormBuilder, private authService: AuthService,
@@ -65,6 +72,10 @@ export class RegisterComponent  implements OnInit{
       });
     }
   }
+
+  changePreferredCountries() {
+		this.preferredCountries = [CountryISO.India, CountryISO.Canada];
+	}
 
   updateConfirmValidator(): void {
     Promise.resolve().then(() => this.registrationForm.controls['checkPassword'].updateValueAndValidity());

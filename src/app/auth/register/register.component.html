@@ -7,7 +7,7 @@
        <nz-form-item>
            <nz-form-label [nzSm]="6" [nzXs]="24"  nzRequired nzFor="firstName">First Name</nz-form-label><br>
            <nz-form-control   nzErrorTip="The input is invalid!">
-             <input class="form-input"   nz-input [(ngModel)]="user.firstName" id="firstName"  name="firstName" formControlName="firstName"/>
+             <input class="form-input"   nz-input  formControlName="firstName"/>
            </nz-form-control>
          </nz-form-item>
        </div>
@@ -15,7 +15,7 @@
          <nz-form-item>
            <nz-form-label  [nzSm]="6" [nzXs]="24" nzRequired nzFor="lastName">Last Name</nz-form-label>
            <nz-form-control  nzErrorTip="The input is invalid!">
-             <input class="form-input"  nz-input [(ngModel)]="user.lastName"  id="lastName"  name="lastName" formControlName="lastName"/>
+             <input class="form-input"  nz-input  formControlName="lastName"/>
            </nz-form-control>
          </nz-form-item>
        </div>
@@ -25,7 +25,7 @@
        <nz-form-item>
          <nz-form-label [nzSm]="6" [nzXs]="24"  nzRequired nzFor="email">Email Adress</nz-form-label>
          <nz-form-control  [nzErrorTip]="emailErrorTpl">
-           <input nz-input class="form-input"  [(ngModel)]="user.email" name="email" formControlName="email"  type="email" />
+           <input nz-input class="form-input" formControlName="email"  type="email" />
                <ng-template #emailErrorTpl let-control>
                  <ng-container *ngIf="control.hasError('email')">The input is not valid E-mail!</ng-container>
                  <ng-container *ngIf="control.hasError('required')">Please input your E-mail!</ng-container>
@@ -41,8 +41,6 @@
              class="form-input" 
                nz-input
                type="password"
-               name="password" 
-               [(ngModel)]="user.password" 
                formControlName="password"
                (ngModelChange)="updateConfirmValidator()"
              />
@@ -71,7 +69,7 @@
          <nz-form-item>
            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="dateOfBirth">Date Of Birth</nz-form-label>
            <nz-form-control  nzErrorTip="The input isinvalid">
-            <nz-date-picker  class="form-input"  style="width: 100%" name="dateOfBirth" id="dateOfBirth" [(ngModel)]="user.dateOfBirth"  formControlName="dateOfBirth"></nz-date-picker>
+            <nz-date-picker  class="form-input"  style="width: 100%"  formControlName="dateOfBirth"></nz-date-picker>
            </nz-form-control>
          </nz-form-item>
        </div>
@@ -82,8 +80,7 @@
              <input
              class="form-input" 
               nz-input 
-              type="password" 
-              name="checkPassword"  
+              type="password"  
                formControlName="checkPassword" />
              <ng-template #errorTpl let-control >
                <ng-container *ngIf="control.hasError('required')">Please confirm your password!</ng-container>
@@ -103,14 +100,35 @@
    <div class="row">
      <div class="col-lg-6">
        <nz-form-item>
-         
          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
          <nz-form-control
-           
-           nzErrorTip="Please input your phone number!"
-         >
-             <input class="form-input"  [(ngModel)]="user.phoneNumber"  id="phoneNumber"  name='phoneNumber' nz-input   formControlName="phoneNumber">
-         </nz-form-control>
+           nzErrorTip="Please input your phone number!" >
+           <input class="form-input"  nz-input  formControlName="phoneNumber"/>
+         
+           <!-- <div class="wrapper">
+
+  
+           <ngx-intl-tel-input
+           [cssClass]="'custom'"
+           [preferredCountries]="preferredCountries"
+           [enableAutoCountrySelect]="true"
+           [enablePlaceholder]="true"
+           [searchCountryFlag]="true"
+           [searchCountryField]="[
+             SearchCountryField.Iso2,
+             SearchCountryField.Name
+           ]"
+           [selectFirstCountry]="false"
+           [selectedCountryISO]="CountryISO.India"
+           [maxLength]="15"
+           [phoneValidation]="true"
+           [separateDialCode]="separateDialCode"
+           [numberFormat]="PhoneNumberFormat.National"
+           name="phone"
+           formControlName="phoneNumber">
+         </ngx-intl-tel-input> 
+        </div> -->
+          </nz-form-control>
        </nz-form-item>
            
      </div>
@@ -119,7 +137,7 @@
          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="address">Address</nz-form-label>
          <nz-form-control  nzErrorTip="The input is invalid">
              <textarea 
-             nz-input class="form-input" [nzAutosize]="{ minRows: 2, maxRows: 2}" name="address"  [(ngModel)]="user.address"  formControlName="address" >
+             nz-input class="form-input" [nzAutosize]="{ minRows: 2, maxRows: 2}"  formControlName="address" >
              </textarea>
          </nz-form-control>
        </nz-form-item>
@@ -131,7 +149,7 @@
            <nz-form-item>
              <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="gender">Gender</nz-form-label>
              <nz-form-control  nzErrorTip="The input is invalid">
-                 <nz-radio-group class="form-input"  [(ngModel)]="user.gender"  name="gender" formControlName="gender" >
+                 <nz-radio-group class="form-input"  formControlName="gender" >
                      <label  nz-radio [nzValue]="o.value" *ngFor="let o of options" >{{ o.label }}</label>
                    </nz-radio-group>
              </nz-form-control>

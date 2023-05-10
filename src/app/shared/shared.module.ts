@@ -22,7 +22,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
-
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 
 @NgModule({
@@ -49,7 +49,8 @@ import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
    NzDatePickerModule,
      NzPopconfirmModule,
      NzSelectModule,
-     NzTimePickerModule
+     NzTimePickerModule,
+    //  NgxIntlTelInputModule
 
 
 ],

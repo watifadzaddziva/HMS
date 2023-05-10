@@ -21,7 +21,11 @@
     "@auth0/angular-jwt": "^5.1.2",
     "@ngx-formly/core": "^6.1.1",
     "@ngx-formly/ng-zorro-antd": "^6.1.1",
+    "google-libphonenumber": "^3.2.32",
+    "intl-tel-input": "^17.0.3",
     "ng-zorro-antd": "^15.0.3",
+    "ngx-bootstrap": "^6.2.0",
+    "ngx-intl-tel-input": "^3.2.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

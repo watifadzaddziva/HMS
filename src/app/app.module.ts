@@ -18,7 +18,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { FormsModule, ReactiveFormsModule, } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormlyNgZorroAntdModule } from '@ngx-formly/ng-zorro-antd';
-import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
@@ -42,6 +42,7 @@ registerLocaleData(en);
     ReactiveFormsModule,
     FormlyModule,
     FormlyNgZorroAntdModule,
+    NgxIntlTelInputModule
    
 
 
